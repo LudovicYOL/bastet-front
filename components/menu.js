@@ -15,3 +15,5 @@
     function loadContent(){
 
     }
+
+    initPage("profile");
