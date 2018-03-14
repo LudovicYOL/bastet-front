@@ -16,4 +16,4 @@ function loadContent() {
 
 }
 
-initPage("profile");
+initPage("login");
