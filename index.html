@@ -19,10 +19,15 @@
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
   <script>
     $(document).ready(function () {
-      $("#menu").load("components/menu.html");
-      $.getScript("components/menu.js");
+      if (sessionStorage.getItem('user')) {
+        initPage("profile");
+        initMenu();
+      } else {
+        initPage("login");
+      }
     });
   </script>
 </body>

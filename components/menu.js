@@ -6,14 +6,3 @@ $(document).on("click", "a.menu-item", function (data) {
     initPage(href);
     $('.button-collapse').sideNav('hide');
 });
-
-function initPage(page) {
-    $("#container").load("pages/" + page + ".html");
-    $.getScript("pages/" + page + ".js");
-}
-
-function loadContent() {
-
-}
-
-initPage("login");

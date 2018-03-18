@@ -1,3 +1,0 @@
-function connect(){
-    initPage("profile");
-}
