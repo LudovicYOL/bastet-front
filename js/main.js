@@ -9,21 +9,34 @@ function initPage(page) {
 }
 
 function connect() {
+    
     var data = {};
     data.email = $("#email").val();
     data.password = $("#password").val();
-    console.log(data);
-    $.post("http://localhost/bastet-slim/v1/login", data, function (data) {
 
-        console.log(data);
-        if (data.error) {
-            Materialize.toast(data.message, 1000);
-        } else {
-            sessionStorage.setItem('user', data.name);
-            sessionStorage.setItem('api-key', data.apiKey);
-            location.reload();
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: 'http://localhost/bastet-slim/v1/login',
+        dataType: 'json',
+        data:data,
+        success: function(data, status, xml){
+            if (data.error) {
+                Materialize.toast(data.message, 1000);
+            } else {
+                sessionStorage.setItem('user', data.name);
+                sessionStorage.setItem('api-key', data.apiKey);
+                location.reload();
+            }
+        },
+        error: function(data, status, error){
+            Materialize.toast(data.responseJSON.message, 1000);
+        },
+        complete: function(data, status){
+            // DO NOTHING
         }
-    }, "json");
+    });
+       
 }
 
 function disconnect() {

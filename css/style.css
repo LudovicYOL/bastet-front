@@ -1,3 +1,13 @@
 #searchAnnuaire i, #searchAnnuaire input{
     color:white;
 }
+
+.accueil_link{
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.accueil_link i{
+    margin-right:10px;
+}
