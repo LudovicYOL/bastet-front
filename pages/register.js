@@ -37,11 +37,6 @@ $( "#register-form" ).submit(function( event ) {
 
 function register() {
 
-    var data = {};
-    data.email = $("#email").val();
-    data.password = $("#password-first").val();
-    data.role = $("#role").val();
-
     // Validation
     if($("#role").val() == null){
         Materialize.toast("Veuillez sélectionner un rôle", 1000);
@@ -53,6 +48,14 @@ function register() {
         return;
     }
 
+    // Construction objet
+    var role = $("#role").val();
+    var data = {};
+    data.email = $("#email").val();
+    data.password = $("#password-first").val();
+    data.role = role;
+
+    
     // Appel serveur
     console.log("appel serveur");
     $.ajax({
@@ -63,12 +66,22 @@ function register() {
         data: data,
         success: function(data, status, xml){
             console.log(data);
+            if (data.error) {
+                Materialize.toast(data.message, 1000);
+            } else {
+                Materialize.toast("Vous êtes inscrit avec succès !", 1000);
+                if(role == "ECOLE")
+                {
+                    initPage("wait-for-validation");
+                }
+                else
+                {
+                    initPage("create-account");
+                }
+            }
         },
         error: function(data, status, error){
-            console.log(data);
-        },
-        complete: function(data, status){
-            console.log(data);
+            Materialize.toast(data.responseJSON.message, 1000);
         }
     });
 }

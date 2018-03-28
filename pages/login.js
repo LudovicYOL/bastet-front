@@ -38,6 +38,7 @@ function connect() {
                 }  
             } else {
                 sessionStorage.setItem('user', data.name);
+                sessionStorage.setItem('role', data.role);
                 sessionStorage.setItem('api-key', data.apiKey);
                 location.reload();
             }
