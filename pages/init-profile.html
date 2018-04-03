@@ -1,0 +1,71 @@
+<div class="section"></div>
+<main>
+    <center>
+        <div class="section"></div>
+        <div class="container">
+            <img class="responsive-img" style="width: 300px;text-align:center;" src="./images/bastet.png" />
+        </div>
+
+        <div class="container">
+            <div class="z-depth-1 grey lighten-4 row" style="padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+                <p>
+                    <b>Initialisation de votre profil</b>
+                    <br/> Plus qu'une étape !</p>
+                <form id="init-profile-form" class="col s12" method="post">
+                    <div class='row'>
+                        <div class='col s12'>
+                        </div>
+                    </div>
+
+                    <div class='row'>
+                        <div class='input-field col s12'>
+                            <input class='validate' type='text' name='prenom' id='prenom' />
+                            <label for='prenom' data-error="veuillez saisir votre prénom">Entrer votre prénom</label>
+                        </div>
+                    </div>
+
+                    <div class='row'>
+                        <div class='input-field col s12'>
+                            <input class='validate' type='text' name='nom' id='nom' />
+                            <label for='nom' data-error="veuilez saisir votre nom">Entrer votre nom</label>
+                        </div>
+                    </div>
+
+                    <div class='row'>
+                        <div class='input-field col s12'>
+                            <input class='validate datepicker' type='text' name='date_naiss' id='date_naiss' />
+                            <label for='date_naiss' data-error="veuillez saisir votre date de naissance">Entrer votre date de naissance</label>
+                        </div>
+                    </div>
+
+                    <div class='row'>
+                        <div class="input-field col s12">
+                            <select id="promotion" required>
+                                <option value="" disabled selected>Choisis ta promotion</option>
+                            </select>
+                            <label data-error="veuillez sélectionner votre promotion">Vous avez été diplômé en...</label>
+                        </div>
+                    </div>
+
+
+                    <div class='row'>
+                        <div class="input-field col s12">
+                            <div id="keywords" class="chips chips-placeholder input-field">
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <br />
+                    <center>
+                        <div class='row'>
+                            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Initialiser votre profil</button>
+                        </div>
+                    </center>
+                </form>
+            </div>
+        </div>
+    </center>
+</main>

@@ -11,3 +11,22 @@
 .accueil_link i{
     margin-right:10px;
 }
+
+
+/* INIT PROFILE */
+#keywords{
+    text-align: left;
+}
+
+/* ANNUAIRE */
+#annuaire .card-image{
+    height:200px;
+    width:100%;
+    background-size:cover;
+}
+
+#annuaire .keyword.badge{
+    color: white;
+    background: #00BCD4;
+}
+
