@@ -1,3 +1,7 @@
+body.connected{
+    background-color:#313f52;
+}
+
 #searchAnnuaire i, #searchAnnuaire input{
     color:white;
 }
@@ -12,6 +16,10 @@
     margin-right:10px;
 }
 
+/* MENU */
+#menu .menu-item, #menu .button-collapse{
+    color:#313f52 !important; 
+}
 
 /* INIT PROFILE */
 #keywords{
