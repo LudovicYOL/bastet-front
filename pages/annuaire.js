@@ -1,8 +1,22 @@
 
 function init() {
-    recherche("");
+    let keyword = verifierRecherche();
+    recherche(keyword);
 }
 init();
+
+/**
+ * Vérfiier historique de recherche
+ */
+function verifierRecherche(){
+    let keyword = sessionStorage.getItem("annuaire-search");
+    if(keyword == null){
+        return "";
+    }else{
+        $("#search-input").val(keyword);
+        return keyword;
+    } 
+}
 
 /**
  * Initialisation de l'annuaire
@@ -31,7 +45,13 @@ function recherche(keyword) {
 
                     let template = "<div id='profile-" + profile.id + "' data-id='" + profile.id + "' class='profile col s12 m6 l3'>";
                     template += "<div class='card'>";
-                    template += "<div class='card-image waves-effect waves-block waves-light' style=\"background-image:url('./images/yol_ludovic.jpg');\">";
+                    if(profile.picture == ""){
+                        template += "<div class='card-image waves-effect waves-block waves-light' style=\"background-color:"+ getRandomColor() +"\">";
+                        template += "<span class='card-initiale'>"+ getInitiales(profile) +"</span>";
+                    }else{
+                        template += "<div class='card-image waves-effect waves-block waves-light' style=\"background-image:url('./images/"+ profile.picture +"');\">";
+                    }
+                    
                     template += "<img class='activator'>";
                     template += "</div>";
                     template += "<div class='card-content'>";
@@ -62,14 +82,13 @@ function recherche(keyword) {
             // activer le click pour ouvrir le profil
             $(".card-image").on('click', function () {
                 let profile = $(this).closest(".profile");
-                console.log("ouverture profil : " + profile.attr("data-id"));
+                openProfile(profile.attr("data-id"));
             });
         }
     });
 }
 
 // GESTION RECHERCHE
-
 $("#search-btn > a > i").on('click', function () {
     setTimeout(function () {
         $('#search-input').focus();
@@ -93,5 +112,14 @@ $('#search-input').on('keydown', function () {
 
 //user is "finished typing," do something
 function doneTyping() {
-    recherche($('#search-input').val());
+    let keyword = $('#search-input').val();
+    sessionStorage.setItem("annuaire-search", keyword);
+    recherche(keyword);
+}
+
+
+// OUVRIR PROFIL
+function openProfile(idProfile){
+    sessionStorage.setItem("profile-id", idProfile);
+    initPage("profile");
 }

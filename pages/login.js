@@ -28,7 +28,6 @@ function connect() {
         dataType: 'json',
         data: data,
         success: function (data, status, xml) {
-            console.log(data);
             if (data.error) {
                 Materialize.toast(data.message, 1000);
                 if (data.field == "password") {
@@ -37,7 +36,8 @@ function connect() {
                     $("#email").addClass("invalid");
                 }
             } else {
-                sessionStorage.setItem('user', data.name);
+                sessionStorage.setItem('user-name', data.name);
+                sessionStorage.setItem('user-id', data.id);
                 sessionStorage.setItem('role', data.role);
                 sessionStorage.setItem('api-key', data.apiKey);
                 $("body").addClass("connected");

@@ -1,46 +1,18 @@
-<div class="row">
+<div id="profile" class="row">
     <div class="col">
         <div class="card">
-            <div class="card-image">
-                <img src="images/yol_ludovic.jpg">
-                <span class="card-title">Modification de votre profil</span>
-                <a class="btn-floating halfway-fab waves-effect waves-light red" onclick="updatePhoto()">
-                    <i class="material-icons">add_a_photo</i>
-                </a>
+            <div id="picture" class="card-image">
+                <img id="picture-image" src="images/template.jpg">
+                <span id="nom" class="card-title"></span>
             </div>
             <div class="card-content">
                 <div class="row">
                     <form class="col s12">
                         <div class="row">
-                            <div class="input-field col s6">
-                                <input id="first_name" type="text" class="validate">
-                                <label for="first_name">First Name</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input id="last_name" type="text" class="validate">
-                                <label for="last_name">Last Name</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="password" type="password" class="validate">
-                                <label for="password">Password</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="email" type="email" class="validate">
-                                <label for="email">Email</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12">
-                                This is an inline input field:
-                                <div class="input-field inline">
-                                    <input id="email" type="email" class="validate">
-                                    <label for="email" data-error="wrong" data-success="right">Email</label>
-                                </div>
-                            </div>
+                            <p> Promotion <span id="promotion"></span></p>
+                            <p id="date_naiss"></p>
+                            <p id="email"></p>
+                            <p id="keywords"></p>
                         </div>
                     </form>
                 </div>
@@ -50,10 +22,13 @@
 </div>
 
 
-<div class="fixed-action-btn" onclick="validate()">
+<div class="profile-fab fixed-action-btn">
     <a class="btn-floating btn-large red">
-        <i class="large material-icons">check</i>
+        <i class="large material-icons" onclick="returnToAnnuaire()">arrow_back</i>
     </a>
+    <ul>
+        <li><a class="btn-floating green"><i class="material-icons" onclick="console.log('test')">create</i></a></li>
+      </ul>
 </div>
 
 <div id="updatePhotoModal" class="modal">
