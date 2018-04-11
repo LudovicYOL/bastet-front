@@ -23,7 +23,6 @@
   <script>
     $(document).ready(function () {
       if (sessionStorage.getItem('user-id')) {
-        console.log(sessionStorage.getItem('user-id'));
         $("body").addClass("connected");
         initPage("annuaire");
         initMenu();

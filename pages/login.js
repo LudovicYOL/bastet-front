@@ -38,10 +38,8 @@ function connect() {
             } else {
                 sessionStorage.setItem('user-name', data.name);
                 sessionStorage.setItem('user-id', data.id);
-                sessionStorage.setItem('role', data.role);
+                sessionStorage.setItem('user-role', data.role);
                 sessionStorage.setItem('api-key', data.apiKey);
-                $("body").addClass("connected");
-                location.reload();
             }
         },
         error: function (data, status, error) {

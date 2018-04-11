@@ -2,6 +2,10 @@ body.connected{
     background-color:#313f52;
 }
 
+.hidden{
+    display: none;
+}
+
 #searchAnnuaire i, #searchAnnuaire input{
     color:white;
     line-height:40px;
@@ -58,3 +62,14 @@ body.connected{
     position: absolute;
     z-index: 2;
 }
+
+/* Hack pour fixer le FAB button */
+.profile-fab.fixed-action-btn ul{
+    visibility: inherit;
+}
+
+.profile-fab .btn-floating{
+    opacity: 1 !important;
+    transform: scaleY(1) scaleX(1) !important;
+}
+

@@ -9,7 +9,9 @@
                 <div class="row">
                     <form class="col s12">
                         <div class="row">
-                            <p> Promotion <span id="promotion"></span></p>
+                            <p> Promotion
+                                <span id="promotion"></span>
+                            </p>
                             <p id="date_naiss"></p>
                             <p id="email"></p>
                             <p id="keywords"></p>
@@ -23,12 +25,16 @@
 
 
 <div class="profile-fab fixed-action-btn">
-    <a class="btn-floating btn-large red">
-        <i class="large material-icons" onclick="returnToAnnuaire()">arrow_back</i>
+    <a id="btn-retour" class="btn-floating btn-large red">
+        <i class="large material-icons" onclick="retour()">arrow_back</i>
     </a>
     <ul>
-        <li><a class="btn-floating green"><i class="material-icons" onclick="console.log('test')">create</i></a></li>
-      </ul>
+        <li class="btn-edit hidden">
+            <a class="btn-floating green">
+                <i class="material-icons" onclick="console.log('test')">create</i>
+            </a>
+        </li>
+    </ul>
 </div>
 
 <div id="updatePhotoModal" class="modal">

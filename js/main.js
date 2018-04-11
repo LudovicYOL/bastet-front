@@ -10,6 +10,16 @@ function initMenu() {
 }
 
 function initPage(page) {
+    // Gérer historique navigation
+    let history = [];
+    if (sessionStorage.getItem("history") != null) {
+        history = JSON.parse(sessionStorage.getItem("history"));
+    }
+    history.push(page);
+    if (history.length > 4) history = history.slice(Math.max(history.length - 5, 1))
+    sessionStorage.setItem("history", JSON.stringify(history));
+
+    // Rediriger vers la page demandée
     $("#container").load("pages/" + page + ".html");
     $.getScript("pages/" + page + ".js");
 }
@@ -17,6 +27,12 @@ function initPage(page) {
 function disconnect() {
     sessionStorage.clear();
     location.reload();
+}
+
+function retour() {
+    let history = JSON.parse(sessionStorage.getItem("history"));
+    console.log(history);
+    initPage(history[history.length - 2]);
 }
 
 function initSelect() {
@@ -36,7 +52,7 @@ function initDatePicker() {
     });
 }
 
-function getRandomColor(){
+function getRandomColor() {
     var colors = [
         "#b71c1c",
         "#880e4f",
@@ -65,6 +81,6 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-function getInitiales(profile){
+function getInitiales(profile) {
     return profile.prenom.charAt(0) + profile.nom.charAt(0);
 }
