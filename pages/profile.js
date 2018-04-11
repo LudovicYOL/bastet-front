@@ -1,14 +1,13 @@
 function init() {
-   intialiserProfile(sessionStorage.getItem("profile-id"));
+   intialiserProfile();
    initialiserFAB();
 }
 init();
 
 
-function intialiserProfile(id){
-
-    console.log(id);
-
+function intialiserProfile(){
+    let id = sessionStorage.getItem('profile-id');
+    console.log("id : "+ id);
     $.ajax({
         type: 'GET',
         cache: false,

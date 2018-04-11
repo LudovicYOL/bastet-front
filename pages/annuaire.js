@@ -34,48 +34,48 @@ function recherche(keyword) {
             'Authorization': sessionStorage.getItem('api-key')
         },
         success: function (data, status, xml) {
-            console.log(data);
             if (data.error) {
                 Materialize.toast(data.responseJSON.message, 1000);
             } else {
                 for (let key in data.profiles) {
                     let profile = data.profiles[key];
 
-                    console.log(profile);
-
-                    let template = "<div id='profile-" + profile.id + "' data-id='" + profile.id + "' class='profile col s12 m6 l3'>";
-                    template += "<div class='card'>";
-                    if(profile.picture == ""){
-                        template += "<div class='card-image waves-effect waves-block waves-light' style=\"background-color:"+ getRandomColor() +"\">";
-                        template += "<span class='card-initiale'>"+ getInitiales(profile) +"</span>";
-                    }else{
-                        template += "<div class='card-image waves-effect waves-block waves-light' style=\"background-image:url('./images/"+ profile.picture +"');\">";
-                    }
-                    
-                    template += "<img class='activator'>";
-                    template += "</div>";
-                    template += "<div class='card-content'>";
-                    template += "<span class='card-title activator grey-text text-darken-4'>" + profile.prenom + " " + profile.nom + "";
-                    template += "<i class='material-icons right'>more_vert</i>";
-                    template += "</span>";
-                    template += "<p class='card-promotion'>Promotion " + profile.promotion + "</p>";
-                    template += "</div>";
-                    template += "<div class='card-reveal'>";
-                    template += "<span class='card-title grey-text text-darken-4'>Mots clés";
-                    template += "<i class='material-icons right'>close</i>";
-                    template += "</span>";
-                    template += "<p>";
-
-                    for (let key in profile.keywords.split(';')) {
-                        let keyword = profile.keywords.split(';')[key];
-                        if (keyword != "") template += "<span class='badge keyword'>" + keyword + "</span>";
-                    }
-                    template += "</p>";
-                    template += "</div>";
-                    template += "</div>";
-                    template += "</div >";
-
-                    $("#annuaire").append(template);
+                    // Si ce n'est pas mon profil, je génère la carte 
+                    if(profile.id != sessionStorage.getItem('user-id')){
+                        let template = "<div id='profile-" + profile.id + "' data-id='" + profile.id + "' class='profile col s12 m6 l3'>";
+                        template += "<div class='card'>";
+                        if(profile.picture == ""){
+                            template += "<div class='card-image waves-effect waves-block waves-light' style=\"background-color:"+ getRandomColor() +"\">";
+                            template += "<span class='card-initiale'>"+ getInitiales(profile) +"</span>";
+                        }else{
+                            template += "<div class='card-image waves-effect waves-block waves-light' style=\"background-image:url('./images/"+ profile.picture +"');\">";
+                        }
+                        
+                        template += "<img class='activator'>";
+                        template += "</div>";
+                        template += "<div class='card-content'>";
+                        template += "<span class='card-title activator grey-text text-darken-4'>" + profile.prenom + " " + profile.nom + "";
+                        template += "<i class='material-icons right'>more_vert</i>";
+                        template += "</span>";
+                        template += "<p class='card-promotion'>Promotion " + profile.promotion + "</p>";
+                        template += "</div>";
+                        template += "<div class='card-reveal'>";
+                        template += "<span class='card-title grey-text text-darken-4'>Mots clés";
+                        template += "<i class='material-icons right'>close</i>";
+                        template += "</span>";
+                        template += "<p>";
+    
+                        for (let key in profile.keywords.split(';')) {
+                            let keyword = profile.keywords.split(';')[key];
+                            if (keyword != "") template += "<span class='badge keyword'>" + keyword + "</span>";
+                        }
+                        template += "</p>";
+                        template += "</div>";
+                        template += "</div>";
+                        template += "</div >";
+    
+                        $("#annuaire").append(template);
+                    } 
                 }
             }
 

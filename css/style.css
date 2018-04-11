@@ -4,6 +4,14 @@ body.connected{
 
 #searchAnnuaire i, #searchAnnuaire input{
     color:white;
+    line-height:40px;
+}
+
+#search-input{
+    box-shadow: none !important;
+    font-size: 25px;
+    border-bottom: none;
+    width: 100%;
 }
 
 .accueil_link{
